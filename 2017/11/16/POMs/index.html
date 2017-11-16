@@ -15,17 +15,17 @@
   
   <title>POMs | Burning Tower</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##ForewordJar packages were packed to fit different usages for java programming.Despite the convenient management brought by maven, the complex of maven importation is getting harder to remember as mo">
+  <meta name="description" content="ForewordJar packages were packed to fit different usages for java programming.Despite the convenient management brought by maven, the complex of maven importation is getting harder to remember as more">
 <meta property="og:type" content="article">
 <meta property="og:title" content="POMs">
 <meta property="og:url" content="http://yoursite.com/2017/11/16/POMs/index.html">
 <meta property="og:site_name" content="Burning Tower">
-<meta property="og:description" content="##ForewordJar packages were packed to fit different usages for java programming.Despite the convenient management brought by maven, the complex of maven importation is getting harder to remember as mo">
+<meta property="og:description" content="ForewordJar packages were packed to fit different usages for java programming.Despite the convenient management brought by maven, the complex of maven importation is getting harder to remember as more">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-11-16T04:49:38.554Z">
+<meta property="og:updated_time" content="2017-11-16T04:56:00.789Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="POMs">
-<meta name="twitter:description" content="##ForewordJar packages were packed to fit different usages for java programming.Despite the convenient management brought by maven, the complex of maven importation is getting harder to remember as mo">
+<meta name="twitter:description" content="ForewordJar packages were packed to fit different usages for java programming.Despite the convenient management brought by maven, the complex of maven importation is getting harder to remember as more">
   
   
     <link rel="icon" href="/css/images/favicon.ico">
@@ -81,48 +81,374 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/11/16/POMs/" data-id="cja1zys9q0004ygvknynzs7er" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/11/16/POMs/" data-id="cja20694z0000aovkglcupymx" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <p>##Foreword<br>Jar packages were packed to fit different usages for java programming.<br>Despite the convenient management brought by maven, the complex of maven importation is getting harder to remember as more and more structure were invented for advanced intentions.<br>Hence I’d like to mark a collection of common used dependencies sorted in different occasions.</p>
-<p>##Collection of Dependencies</p>
-<p>####Junit<br>    <dependency><br>      <groupid>junit</groupid><br>      <artifactid>junit</artifactid><br>      <version>${junit.version}</version><br>      <scope>test</scope><br>    </dependency></p>
-<p>####Spring(with jdbc, mvc)<br>    <dependency><br>        <groupid>org.springframework</groupid><br>        <artifactid>spring-web</artifactid><br>        <version>${spring.version}</version><br>    </dependency><br>    <dependency><br>        <groupid>org.springframework</groupid><br>        <artifactid>spring-webmvc</artifactid><br>        <version>${spring.version}</version><br>    </dependency><br>    <dependency><br>        <groupid>org.springframework</groupid><br>        <artifactid>spring-jdbc</artifactid><br>        <version>${spring.version}</version><br>    </dependency><br>    <dependency><br>        <groupid>org.springframework</groupid><br>        <artifactid>spring-tx</artifactid><br>        <version>${spring.version}</version><br>    </dependency><br>    <dependency><br>        <groupid>org.springframework</groupid><br>        <artifactid>spring-aspects</artifactid><br>        <version>${spring.version}</version><br>    </dependency><br>    <dependency><br>        <groupid>org.springframework</groupid><br>        <artifactid>spring-aop</artifactid><br>        <version>${spring.version}</version><br>    </dependency><br>    <dependency><br>        <groupid>org.springframework</groupid><br>        <artifactid>spring-context</artifactid><br>        <version>${spring.version}</version><br>    </dependency><br>    <dependency><br>        <groupid>org.springframework</groupid><br>        <artifactid>spring-core</artifactid><br>        <version>${spring.version}</version><br>    </dependency></p>
-<p>####Log4j<br>    <dependency><br>        <groupid>log4j</groupid><br>        <artifactid>log4j</artifactid><br>        <version>${log4j.version}</version><br>    </dependency><br>    <dependency><br>        <groupid>org.slf4j</groupid><br>        <artifactid>slf4j-api</artifactid><br>        <version>${slf4j.version}</version><br>    </dependency><br>    <dependency><br>        <groupid>org.slf4j</groupid><br>        <artifactid>slf4j-log4j12</artifactid><br>        <version>${slf4j.version}</version><br>    </dependency></p>
-<p>####Database(Redis, mysql, druid)<br>    <dependency><br>        <groupid>mysql</groupid><br>        <artifactid>mysql-connector-java</artifactid><br>        <version>${mysql.version}</version><br>    </dependency><br>    <dependency><br>        <groupid>com.alibaba</groupid><br>        <artifactid>druid</artifactid><br>        <version>${druid.version}</version><br>    </dependency><br>    <dependency><br>        <groupid>redis.clients</groupid><br>        <artifactid>jedis</artifactid><br>        <version>2.9.0</version><br>    </dependency></p>
-<p>####Mybatis<br>    <dependency><br>        <groupid>org.mybatis</groupid><br>        <artifactid>mybatis</artifactid><br>        <version>3.4.5</version><br>    </dependency><br>    <!--Reverse engineer--><br>    <dependency><br>        <groupid>org.mybatis.generator</groupid><br>        <artifactid>mybatis-generator-core</artifactid><br>        <version>1.3.5</version><br>    </dependency></p>
-<p>####Mybatis plus<br>    <dependency><br>        <groupid>com.baomidou</groupid><br>        <artifactid>mybatis-plus</artifactid><br>        <version>${mybaitsplus.version}</version><br>    </dependency><br>    <!--velocity模板，用来生成代码--><br>    <dependency><br>        <groupid>org.apache.velocity</groupid><br>        <artifactid>velocity</artifactid><br>        <version>1.7</version><br>    </dependency></p>
-<p>####JavaWeb (jsp, servlet)<br>    <dependency><br>        <groupid>javax.servlet</groupid><br>        <artifactid>javax.servlet-api</artifactid><br>        <version>4.0.0</version><br>        <scope>provided</scope><br>    </dependency><br>    <dependency><br>        <groupid>javax.servlet</groupid><br>        <artifactid>jsp-api</artifactid><br>        <version>2.0</version><br>        <scope>provided</scope><br>    </dependency><br>    <dependency><br>        <groupid>javax.servlet</groupid><br>        <artifactid>jstl</artifactid><br>        <version>1.2</version><br>    </dependency></p>
-<p>####Jackson<br>    <dependency><br>        <groupid>com.fasterxml.jackson.core</groupid><br>        <artifactid>jackson-annotations</artifactid><br>        <version>${jackson.version}</version><br>    </dependency><br>    <dependency><br>        <groupid>com.fasterxml.jackson.core</groupid><br>        <artifactid>jackson-databind</artifactid><br>        <version>${jackson.version}</version><br>    </dependency><br>    <dependency><br>        <groupid>com.fasterxml.jackson.core</groupid><br>        <artifactid>jackson-core</artifactid><br>        <version>${jackson.version}</version><br>    </dependency></p>
-<p>####shiro<br>    <dependency><br>        <groupid>org.apache.shiro</groupid><br>        <artifactid>shiro-web</artifactid><br>        <version>${shiro.version}</version><br>    </dependency><br>    <dependency><br>        <groupid>org.apache.shiro</groupid><br>        <artifactid>shiro-core</artifactid><br>        <version>${shiro.version}</version><br>    </dependency><br>    <dependency><br>        <groupid>org.apache.shiro</groupid><br>        <artifactid>shiro-ehcache</artifactid><br>        <version>1.2.2</version><br>    </dependency><br>    <dependency><br>        <groupid>commons-logging</groupid><br>        <artifactid>commons-logging</artifactid><br>        <version>1.1.3</version><br>    </dependency></p>
-<pre><code>#####Integration with spring
+        <h2 id="Foreword"><a href="#Foreword" class="headerlink" title="Foreword"></a>Foreword</h2><p>Jar packages were packed to fit different usages for java programming.<br>Despite the convenient management brought by maven, the complex of maven importation is getting harder to remember as more and more structure were invented for advanced intentions.<br>Hence I’d like to mark a collection of common used dependencies sorted in different occasions.</p>
+<h2 id="Collection-of-Dependencies"><a href="#Collection-of-Dependencies" class="headerlink" title="Collection of Dependencies"></a>Collection of Dependencies</h2><h4 id="Junit"><a href="#Junit" class="headerlink" title="Junit"></a>Junit</h4><pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;junit&lt;/groupId&gt;
+  &lt;artifactId&gt;junit&lt;/artifactId&gt;
+  &lt;version&gt;${junit.version}&lt;/version&gt;
+  &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre><h4 id="Spring-with-jdbc-mvc"><a href="#Spring-with-jdbc-mvc" class="headerlink" title="Spring(with jdbc, mvc)"></a>Spring(with jdbc, mvc)</h4><pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-web&lt;/artifactId&gt;
+    &lt;version&gt;${spring.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
+    &lt;version&gt;${spring.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;
+    &lt;version&gt;${spring.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-tx&lt;/artifactId&gt;
+    &lt;version&gt;${spring.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-aspects&lt;/artifactId&gt;
+    &lt;version&gt;${spring.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-aop&lt;/artifactId&gt;
+    &lt;version&gt;${spring.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-context&lt;/artifactId&gt;
+    &lt;version&gt;${spring.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-core&lt;/artifactId&gt;
+    &lt;version&gt;${spring.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h4 id="Log4j"><a href="#Log4j" class="headerlink" title="Log4j"></a>Log4j</h4><pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;log4j&lt;/groupId&gt;
+    &lt;artifactId&gt;log4j&lt;/artifactId&gt;
+    &lt;version&gt;${log4j.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+    &lt;artifactId&gt;slf4j-api&lt;/artifactId&gt;
+    &lt;version&gt;${slf4j.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+    &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
+    &lt;version&gt;${slf4j.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h4 id="Database-Redis-mysql-druid"><a href="#Database-Redis-mysql-druid" class="headerlink" title="Database(Redis, mysql, druid)"></a>Database(Redis, mysql, druid)</h4><pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;mysql&lt;/groupId&gt;
+    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+    &lt;version&gt;${mysql.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+    &lt;artifactId&gt;druid&lt;/artifactId&gt;
+    &lt;version&gt;${druid.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;redis.clients&lt;/groupId&gt;
+    &lt;artifactId&gt;jedis&lt;/artifactId&gt;
+    &lt;version&gt;2.9.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h4 id="Mybatis"><a href="#Mybatis" class="headerlink" title="Mybatis"></a>Mybatis</h4><pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+    &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
+    &lt;version&gt;3.4.5&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;!--Reverse engineer--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.mybatis.generator&lt;/groupId&gt;
+    &lt;artifactId&gt;mybatis-generator-core&lt;/artifactId&gt;
+    &lt;version&gt;1.3.5&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h4 id="Mybatis-plus"><a href="#Mybatis-plus" class="headerlink" title="Mybatis plus"></a>Mybatis plus</h4><pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;com.baomidou&lt;/groupId&gt;
+    &lt;artifactId&gt;mybatis-plus&lt;/artifactId&gt;
+    &lt;version&gt;${mybaitsplus.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;!--velocity模板，用来生成代码--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.velocity&lt;/groupId&gt;
+    &lt;artifactId&gt;velocity&lt;/artifactId&gt;
+    &lt;version&gt;1.7&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h4 id="JavaWeb-jsp-servlet"><a href="#JavaWeb-jsp-servlet" class="headerlink" title="JavaWeb (jsp, servlet)"></a>JavaWeb (jsp, servlet)</h4><pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+    &lt;artifactId&gt;javax.servlet-api&lt;/artifactId&gt;
+    &lt;version&gt;4.0.0&lt;/version&gt;
+    &lt;scope&gt;provided&lt;/scope&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+    &lt;artifactId&gt;jsp-api&lt;/artifactId&gt;
+    &lt;version&gt;2.0&lt;/version&gt;
+    &lt;scope&gt;provided&lt;/scope&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+    &lt;artifactId&gt;jstl&lt;/artifactId&gt;
+    &lt;version&gt;1.2&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h4 id="Jackson"><a href="#Jackson" class="headerlink" title="Jackson"></a>Jackson</h4><pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
+    &lt;artifactId&gt;jackson-annotations&lt;/artifactId&gt;
+    &lt;version&gt;${jackson.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
+    &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;
+    &lt;version&gt;${jackson.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
+    &lt;artifactId&gt;jackson-core&lt;/artifactId&gt;
+    &lt;version&gt;${jackson.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h4 id="shiro"><a href="#shiro" class="headerlink" title="shiro"></a>shiro</h4><pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.shiro&lt;/groupId&gt;
+    &lt;artifactId&gt;shiro-web&lt;/artifactId&gt;
+    &lt;version&gt;${shiro.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.shiro&lt;/groupId&gt;
+    &lt;artifactId&gt;shiro-core&lt;/artifactId&gt;
+    &lt;version&gt;${shiro.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.shiro&lt;/groupId&gt;
+    &lt;artifactId&gt;shiro-ehcache&lt;/artifactId&gt;
+    &lt;version&gt;1.2.2&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;commons-logging&lt;/groupId&gt;
+    &lt;artifactId&gt;commons-logging&lt;/artifactId&gt;
+    &lt;version&gt;1.1.3&lt;/version&gt;
+&lt;/dependency&gt;
+##### Integration with spring
 &lt;dependency&gt;
     &lt;groupId&gt;org.apache.shiro&lt;/groupId&gt;
     &lt;artifactId&gt;shiro-spring&lt;/artifactId&gt;
     &lt;version&gt;1.2.2&lt;/version&gt;
 &lt;/dependency&gt;
-</code></pre><p>####lombok<br>    <dependency><br>        <groupid>org.projectlombok</groupid><br>        <artifactid>lombok</artifactid><br>        <version>1.16.16</version><br>    </dependency></p>
-<p>####aspectj<br>    <dependency><br>        <groupid>org.aspectj</groupid><br>        <artifactid>aspectjrt</artifactid><br>        <version>1.7.4</version><br>    </dependency><br>    <dependency><br>        <groupid>org.aspectj</groupid><br>        <artifactid>aspectjweaver</artifactid><br>        <version>1.7.4</version><br>    </dependency></p>
-<p>####files<br>    <dependency><br>      <groupid>commons-io</groupid><br>      <artifactid>commons-io</artifactid><br>      <version>2.5</version><br>    </dependency><br>    <dependency><br>      <groupid>commons-fileupload</groupid><br>      <artifactid>commons-fileupload</artifactid><br>      <version>1.3.2</version><br>    </dependency></p>
-<p>####hibernate<br>    <dependency><br>      <groupid>antlr</groupid><br>      <artifactid>antlr</artifactid><br>      <version>2.7.7</version><br>    </dependency><br>    <dependency><br>      <groupid>com.fasterxml</groupid><br>      <artifactid>classmate</artifactid><br>      <version>1.3.4</version><br>    </dependency><br>    <dependency><br>      <groupid>dom4j</groupid><br>      <artifactid>dom4j</artifactid><br>      <version>1.6.1</version><br>    </dependency><br>    <dependency><br>      <groupid>org.apache.geronimo.specs</groupid><br>      <artifactid>geronimo-annotation_1.0_spec</artifactid><br>      <version>1.0</version><br>    </dependency><br>    <dependency><br>      <groupid>org.hibernate.common</groupid><br>      <artifactid>hibernate-commons-annotations</artifactid><br>      <version>5.0.1.Final</version><br>    </dependency><br>    <dependency><br>      <groupid>org.hibernate</groupid><br>      <artifactid>hibernate-core</artifactid><br>      <version>5.0.12.Final</version><br>    </dependency><br>    <dependency><br>      <groupid>org.hibernate.javax.persistence</groupid><br>      <artifactid>hibernate-jpa-2.1-api</artifactid><br>      <version>1.0.0.Final</version><br>    </dependency><br>    <dependency><br>      <groupid>org.jboss</groupid><br>      <artifactid>jandex</artifactid><br>      <version>2.0.0.Final</version><br>    </dependency><br>    <dependency><br>      <groupid>jboss</groupid><br>      <artifactid>javassist</artifactid><br>      <version>3.7.ga</version><br>    </dependency><br>    <dependency><br>      <groupid>org.jboss.logging</groupid><br>      <artifactid>jboss-logging</artifactid><br>      <version>3.3.1.Final</version><br>    </dependency><br>    <dependency><br>      <groupid>org.hibernate</groupid><br>      <artifactid>hibernate-ehcache</artifactid><br>      <version>5.0.12.Final</version><br>    </dependency><br>    <dependency><br>      <groupid>net.sf.ehcache</groupid><br>      <artifactid>ehcache-core</artifactid><br>      <version>2.6.11</version><br>    </dependency><br>    <dependency><br>      <groupid>org.hibernate</groupid><br>      <artifactid>hibernate-validator</artifactid><br>      <version>5.1.1.Final</version><br>    </dependency></p>
-<p>####validation<br>    <dependency><br>      <groupid>javax.validation</groupid><br>      <artifactid>validation-api</artifactid><br>      <version>1.1.0.Final</version><br>    </dependency></p>
-<p>####Qiniu CDN<br>    <dependency><br>        <groupid>com.qiniu</groupid><br>        <artifactid>qiniu-java-sdk</artifactid><br>        <version>[7.2.0, 7.2.99]</version><br>    </dependency></p>
-<p>####Zhifubao<br>    <dependency><br>        <groupid>commons-codec</groupid><br>        <artifactid>commons-codec</artifactid><br>        <version>1.10</version><br>    </dependency><br>    <dependency><br>        <groupid>commons-configuration</groupid><br>        <artifactid>commons-configuration</artifactid><br>        <version>1.10</version><br>    </dependency><br>    <dependency><br>        <groupid>commons-lang</groupid><br>        <artifactid>commons-lang</artifactid><br>        <version>2.6</version><br>    </dependency><br>    <dependency><br>        <groupid>commons-logging</groupid><br>        <artifactid>commons-logging</artifactid><br>        <version>1.1.1</version><br>    </dependency><br>    <dependency><br>        <groupid>com.google.zxing</groupid><br>        <artifactid>core</artifactid><br>        <version>2.1</version><br>    </dependency><br>    <dependency><br>        <groupid>com.google.code.gson</groupid><br>        <artifactid>gson</artifactid><br>        <version>2.3.1</version><br>    </dependency><br>    <dependency><br>        <groupid>org.hamcrest</groupid><br>        <artifactid>hamcrest-core</artifactid><br>        <version>1.3</version><br>        <scope>test</scope><br>    </dependency></p>
-<p>####Spring-boot<br>    <dependency><br>        <groupid>org.springframework.boot</groupid><br>        <artifactid>spring-boot-starter-data-jpa</artifactid><br>    </dependency><br>    <dependency><br>        <groupid>org.springframework.boot</groupid><br>        <artifactid>spring-boot-starter-data-redis</artifactid><br>    </dependency><br>    <dependency><br>        <groupid>org.springframework.boot</groupid><br>        <artifactid>spring-boot-starter-web</artifactid><br>        <!--<exclusions>&lt;!&ndash;不使用spring-boot内嵌tomcat&ndash;&gt;
-            <exclusion>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-tomcat</artifactId>
-            </exclusion>
-        </exclusions>--><br>    </dependency><br>    <dependency><br>        <groupid>javax.servlet</groupid><br>        <artifactid>javax.servlet-api</artifactid><br>        <version>4.0.0</version><br>        <scope>provided</scope><br>    </dependency><br>    <dependency><br>        <groupid>org.springframework.boot</groupid><br>        <artifactid>spring-boot-starter-test</artifactid><br>        <scope>test</scope><br>    </dependency></p>
-<p>##Other Settings</p>
-<p>####For spring-boot<br>    <parent><br>        <groupid>org.springframework.boot</groupid><br>        <artifactid>spring-boot-starter-parent</artifactid><br>        <version>1.5.8.RELEASE</version><br>        <relativepath><br>    </relativepath></parent><br>    <build><br>        <plugins><br>            <plugin><br>                <groupid>org.springframework.boot</groupid><br>                <artifactid>spring-boot-maven-plugin</artifactid><br>            </plugin><br>        </plugins><br>    </build></p>
-<p>####For mybatis-plus and maven plugin<br>    <build><br>        <finalname>mybatisplus-spring-mvc</finalname><br>        <plugins><br>            <plugin><br>                <groupid>org.apache.maven.plugins</groupid><br>                <artifactid>maven-compiler-plugin</artifactid><br>                <configuration><br>                    <source>1.7<br>                    <target>1.7</target><br>                </configuration><br>            </plugin><br>        </plugins><br>    </build></p>
-<p>####To import local jars<br>    <repositories><br>        <repository><br>            <id>in-project</id><br>            <name>In Project Repo</name><br>            <url>file://${project.basedir}/src/lib/</url><br>        </repository><br>    </repositories></p>
-<p>####commons<br>    <properties><br>        <project.build.sourceencoding>UTF-8</project.build.sourceencoding><br>        <project.reporting.outputencoding>UTF-8</project.reporting.outputencoding><br>        <java.version>1.8</java.version><br>    </properties></p>
-
+</code></pre><h4 id="lombok"><a href="#lombok" class="headerlink" title="lombok"></a>lombok</h4><pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+    &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+    &lt;version&gt;1.16.16&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h4 id="aspectj"><a href="#aspectj" class="headerlink" title="aspectj"></a>aspectj</h4><pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.aspectj&lt;/groupId&gt;
+    &lt;artifactId&gt;aspectjrt&lt;/artifactId&gt;
+    &lt;version&gt;1.7.4&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.aspectj&lt;/groupId&gt;
+    &lt;artifactId&gt;aspectjweaver&lt;/artifactId&gt;
+    &lt;version&gt;1.7.4&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h4 id="files"><a href="#files" class="headerlink" title="files"></a>files</h4><pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;commons-io&lt;/groupId&gt;
+  &lt;artifactId&gt;commons-io&lt;/artifactId&gt;
+  &lt;version&gt;2.5&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;commons-fileupload&lt;/groupId&gt;
+  &lt;artifactId&gt;commons-fileupload&lt;/artifactId&gt;
+  &lt;version&gt;1.3.2&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h4 id="hibernate"><a href="#hibernate" class="headerlink" title="hibernate"></a>hibernate</h4><pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;antlr&lt;/groupId&gt;
+  &lt;artifactId&gt;antlr&lt;/artifactId&gt;
+  &lt;version&gt;2.7.7&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;com.fasterxml&lt;/groupId&gt;
+  &lt;artifactId&gt;classmate&lt;/artifactId&gt;
+  &lt;version&gt;1.3.4&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;dom4j&lt;/groupId&gt;
+  &lt;artifactId&gt;dom4j&lt;/artifactId&gt;
+  &lt;version&gt;1.6.1&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.apache.geronimo.specs&lt;/groupId&gt;
+  &lt;artifactId&gt;geronimo-annotation_1.0_spec&lt;/artifactId&gt;
+  &lt;version&gt;1.0&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.hibernate.common&lt;/groupId&gt;
+  &lt;artifactId&gt;hibernate-commons-annotations&lt;/artifactId&gt;
+  &lt;version&gt;5.0.1.Final&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.hibernate&lt;/groupId&gt;
+  &lt;artifactId&gt;hibernate-core&lt;/artifactId&gt;
+  &lt;version&gt;5.0.12.Final&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.hibernate.javax.persistence&lt;/groupId&gt;
+  &lt;artifactId&gt;hibernate-jpa-2.1-api&lt;/artifactId&gt;
+  &lt;version&gt;1.0.0.Final&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.jboss&lt;/groupId&gt;
+  &lt;artifactId&gt;jandex&lt;/artifactId&gt;
+  &lt;version&gt;2.0.0.Final&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;jboss&lt;/groupId&gt;
+  &lt;artifactId&gt;javassist&lt;/artifactId&gt;
+  &lt;version&gt;3.7.ga&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.jboss.logging&lt;/groupId&gt;
+  &lt;artifactId&gt;jboss-logging&lt;/artifactId&gt;
+  &lt;version&gt;3.3.1.Final&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.hibernate&lt;/groupId&gt;
+  &lt;artifactId&gt;hibernate-ehcache&lt;/artifactId&gt;
+  &lt;version&gt;5.0.12.Final&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;net.sf.ehcache&lt;/groupId&gt;
+  &lt;artifactId&gt;ehcache-core&lt;/artifactId&gt;
+  &lt;version&gt;2.6.11&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.hibernate&lt;/groupId&gt;
+  &lt;artifactId&gt;hibernate-validator&lt;/artifactId&gt;
+  &lt;version&gt;5.1.1.Final&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h4 id="validation"><a href="#validation" class="headerlink" title="validation"></a>validation</h4><pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;javax.validation&lt;/groupId&gt;
+  &lt;artifactId&gt;validation-api&lt;/artifactId&gt;
+  &lt;version&gt;1.1.0.Final&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h4 id="Qiniu-CDN"><a href="#Qiniu-CDN" class="headerlink" title="Qiniu CDN"></a>Qiniu CDN</h4><pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;com.qiniu&lt;/groupId&gt;
+    &lt;artifactId&gt;qiniu-java-sdk&lt;/artifactId&gt;
+    &lt;version&gt;[7.2.0, 7.2.99]&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h4 id="Zhifubao"><a href="#Zhifubao" class="headerlink" title="Zhifubao"></a>Zhifubao</h4><pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;commons-codec&lt;/groupId&gt;
+    &lt;artifactId&gt;commons-codec&lt;/artifactId&gt;
+    &lt;version&gt;1.10&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;commons-configuration&lt;/groupId&gt;
+    &lt;artifactId&gt;commons-configuration&lt;/artifactId&gt;
+    &lt;version&gt;1.10&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;commons-lang&lt;/groupId&gt;
+    &lt;artifactId&gt;commons-lang&lt;/artifactId&gt;
+    &lt;version&gt;2.6&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;commons-logging&lt;/groupId&gt;
+    &lt;artifactId&gt;commons-logging&lt;/artifactId&gt;
+    &lt;version&gt;1.1.1&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;com.google.zxing&lt;/groupId&gt;
+    &lt;artifactId&gt;core&lt;/artifactId&gt;
+    &lt;version&gt;2.1&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;com.google.code.gson&lt;/groupId&gt;
+    &lt;artifactId&gt;gson&lt;/artifactId&gt;
+    &lt;version&gt;2.3.1&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.hamcrest&lt;/groupId&gt;
+    &lt;artifactId&gt;hamcrest-core&lt;/artifactId&gt;
+    &lt;version&gt;1.3&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre><h4 id="Spring-boot"><a href="#Spring-boot" class="headerlink" title="Spring-boot"></a>Spring-boot</h4><pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;!--&lt;exclusions&gt;&amp;lt;!&amp;ndash;不使用spring-boot内嵌tomcat&amp;ndash;&amp;gt;
+        &lt;exclusion&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-tomcat&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+    &lt;/exclusions&gt;--&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+    &lt;artifactId&gt;javax.servlet-api&lt;/artifactId&gt;
+    &lt;version&gt;4.0.0&lt;/version&gt;
+    &lt;scope&gt;provided&lt;/scope&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre><h2 id="Other-Settings"><a href="#Other-Settings" class="headerlink" title="Other Settings"></a>Other Settings</h2><h4 id="For-spring-boot"><a href="#For-spring-boot" class="headerlink" title="For spring-boot"></a>For spring-boot</h4><pre><code>&lt;parent&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+    &lt;version&gt;1.5.8.RELEASE&lt;/version&gt;
+    &lt;relativePath/&gt;
+&lt;/parent&gt;
+&lt;build&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;
+</code></pre><h4 id="For-mybatis-plus-and-maven-plugin"><a href="#For-mybatis-plus-and-maven-plugin" class="headerlink" title="For mybatis-plus and maven plugin"></a>For mybatis-plus and maven plugin</h4><pre><code>&lt;build&gt;
+    &lt;finalName&gt;mybatisplus-spring-mvc&lt;/finalName&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+            &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+            &lt;configuration&gt;
+                &lt;source&gt;1.7&lt;/source&gt;
+                &lt;target&gt;1.7&lt;/target&gt;
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;
+</code></pre><h4 id="To-import-local-jars"><a href="#To-import-local-jars" class="headerlink" title="To import local jars"></a>To import local jars</h4><pre><code>&lt;repositories&gt;
+    &lt;repository&gt;
+        &lt;id&gt;in-project&lt;/id&gt;
+        &lt;name&gt;In Project Repo&lt;/name&gt;
+        &lt;url&gt;file://${project.basedir}/src/lib/&lt;/url&gt;
+    &lt;/repository&gt;
+&lt;/repositories&gt;
+</code></pre><h4 id="commons"><a href="#commons" class="headerlink" title="commons"></a>commons</h4><pre><code>&lt;properties&gt;
+    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+    &lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;
+    &lt;java.version&gt;1.8&lt;/java.version&gt;
+&lt;/properties&gt;
+</code></pre>
       
     </div><!-- .entry-content -->
 
