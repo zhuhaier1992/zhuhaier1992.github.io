@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="The Pale Skyy shall not block my Sight" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>Spring configFile | Burning Tower</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="spring-config.xml&amp;lt;?xml version=”1.0” encoding=”UTF-8”?&amp;gt;                                   spring-mvc.xml&amp;lt;?xml version=”1.0” encoding=”UTF-8”?&amp;gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring configFile">
+<meta property="og:url" content="http://yoursite.com/2017/11/17/Spring configFile/index.html">
+<meta property="og:site_name" content="Burning Tower">
+<meta property="og:description" content="spring-config.xml&amp;lt;?xml version=”1.0” encoding=”UTF-8”?&amp;gt;                                   spring-mvc.xml&amp;lt;?xml version=”1.0” encoding=”UTF-8”?&amp;gt;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-11-17T06:33:41.108Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring configFile">
+<meta name="twitter:description" content="spring-config.xml&amp;lt;?xml version=”1.0” encoding=”UTF-8”?&amp;gt;                                   spring-mvc.xml&amp;lt;?xml version=”1.0” encoding=”UTF-8”?&amp;gt;">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Burning Tower" rel="home">Burning Tower</a>
+      </h1>
+      
+        <h2 class="site-description">
+          <a href="/" id="subtitle">looking up</a>
+        </h2>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-Spring configFile" class="post-Spring configFile post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      Spring configFile
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/11/17/Spring configFile/" data-id="cja3j3vvf0005icvkwj3j8vin" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h2 id="spring-config-xml"><a href="#spring-config-xml" class="headerlink" title="spring-config.xml"></a>spring-config.xml</h2><p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xsi:schemalocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd"><br><br>    <!--加载配置文件--><br>    <context:property-placeholder location="classpath:application.properties"><br>    <!--引入mybatis配置文件--><br>    <import resource="spring-mybatis.xml"><br>    <!--引入shiro配置文件--><br>    <import resource="spring-shiro.xml"><br>    <!--扫描service层--><br>    <context:component-scan base-package="com.burningtower.service"><br></context:component-scan></import></import></context:property-placeholder></beans>
+
+<h2 id="spring-mvc-xml"><a href="#spring-mvc-xml" class="headerlink" title="spring-mvc.xml"></a>spring-mvc.xml</h2><p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc" xsi:schemalocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd
+            http://www.springframework.org/schema/mvc
+            http://www.springframework.org/schema/mvc/spring-mvc.xsd"><br><br>    <!--扫描controller层--><br>    <context:component-scan base-package="com.burningtower.controller"><br>    <!--开启注解驱动，方便使用注解开发--><br>    <mvc:annotation-driven><br><br>    <!--视图解析器--><br>    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="viewResolver"><br>        <property name="prefix" value="/WEB-INF/jsp/"><br>        <property name="suffix" value=".jsp"><br>    </property></property></bean><br><br>    <!-- 静态资源处理 方式一 --><br>    <mvc:resources mapping="/statics/js/**" location="/statics/js/"><br>    <mvc:resources mapping="/statics/css/**" location="/statics/css/"><br>    <mvc:resources mapping="/statics/**" location="/statics/"><br><br>    <!-- 静态资源处理 方式二，要DefaultServlet配置使用，在web.xml中配置 --><br>    <!--<mvc:default-servlet-handler/>--><br></mvc:resources></mvc:resources></mvc:resources></mvc:annotation-driven></context:component-scan></beans>
+
+<h2 id="log4j"><a href="#log4j" class="headerlink" title="log4j"></a>log4j</h2><p>#Global logging configuration<br>log4j.rootLogger=INFO, stdout</p>
+<p>#MyBatis logging configuration…<br>log4j.logger.com.study.controller=DEBUG<br>log4j.logger.com.study.mapper=DEBUG</p>
+<p>#Console output…<br>log4j.appender.stdout=org.apache.log4j.ConsoleAppender<br>log4j.appender.stdout.layout=org.apache.log4j.PatternLayout<br>log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n</p>
+<h2 id="web-xml"><a href="#web-xml" class="headerlink" title="web.xml"></a>web.xml</h2><p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemalocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+
+<pre><code>&lt;!--通过监听器加载配置文件，并初始化spring容器--&gt;
+&lt;context-param&gt;
+    &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+    &lt;param-value&gt;classpath:spring/spring-config.xml&lt;/param-value&gt;
+&lt;/context-param&gt;
+&lt;listener&gt;
+    &lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;
+&lt;/listener&gt;
+
+&lt;!--前端控制器--&gt;
+&lt;servlet&gt;
+    &lt;servlet-name&gt;DispatcherServlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
+    &lt;init-param&gt;
+        &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+        &lt;param-value&gt;classpath:spring/spring-mvc.xml&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+&lt;/servlet&gt;
+
+&lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;DispatcherServlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
+
+&lt;!-- 过滤器解决中文问题 --&gt;
+&lt;filter&gt;
+    &lt;filter-name&gt;encodingFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;org.springframework.web.filter.CharacterEncodingFilter&lt;/filter-class&gt;
+    &lt;init-param&gt;
+        &lt;param-name&gt;encoding&lt;/param-name&gt;
+        &lt;param-value&gt;UTF-8&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;init-param&gt;
+        &lt;param-name&gt;forceEncoding&lt;/param-name&gt;
+        &lt;param-value&gt;true&lt;/param-value&gt;
+    &lt;/init-param&gt;
+&lt;/filter&gt;
+
+&lt;filter-mapping&gt;
+    &lt;filter-name&gt;encodingFilter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;
+
+&lt;!--自动在spring容器中寻找shiroFilter--&gt;
+&lt;filter&gt;
+    &lt;filter-name&gt;shiroFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;org.springframework.web.filter.DelegatingFilterProxy&lt;/filter-class&gt;
+    &lt;init-param&gt;
+        &lt;param-name&gt;targetFilterLifecycle&lt;/param-name&gt;
+        &lt;param-value&gt;true&lt;/param-value&gt;
+    &lt;/init-param&gt;
+&lt;/filter&gt;
+
+&lt;filter-mapping&gt;
+    &lt;filter-name&gt;shiroFilter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;
+</code></pre><p></p></web-app><p></p>
+<h2 id="spring-shiro"><a href="#spring-shiro" class="headerlink" title="spring-shiro"></a>spring-shiro</h2><p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"><br><br>    <!--创建shiroFilter，shiro的核心--><br>    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean"><br>        <!--注入securityManager--><br>        <property name="securityManager" ref="securityManager"><br>        <!--如果没有认证，自动跳转到该页面--><br>        <property name="loginUrl" value="/login.jsp"><br>        <!--过滤链--><br>        <property name="filterChainDefinitions"><br>            <value><br>                /login=anon<br>                /** = authc<br>            </value><br>        </property><br>    </property></property></bean><br><br>    <!--配置WebSecurityManager--><br>    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager"><br>        <!--注入自定义的realm--><br>        <property name="realm" ref="userRealm"><br>    </property></bean><br><br>    <!--自定义reelm，用来认证和授权--><br>    <bean class="com.burningtower.shiro.UserRealm" id="userRealm"><br>        <property name="credentialsMatcher" ref="credentialsMatcher"><br>    </property></bean><br><br>    <!--凭证匹配器，用来解密md5--><br>    <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher" id="credentialsMatcher"><br>        <property name="hashAlgorithmName" value="md5"><br>    </property></bean><br><br>    <!--生命周期--><br>    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"><br><br></bean></beans>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2017/11/17/Spring configFile/">
+    <time datetime="2017-11-17T06:23:44.683Z" class="entry-date">
+        2017-11-17
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+    
+        <span class="nav-next"><a href="/2017/11/17/Mybatis-plus configFile/" rel="next">Mybatis-plus configFile <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-content">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/基础设施/">基础设施</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2017/11/17/Spring configFile/">Spring configFile</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/17/Mybatis-plus configFile/">Mybatis-plus configFile</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/16/POMs/">POMs</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/02/Linux入门/">linux入门</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/01/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-content">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-content tagcloud">
+      <a href="/tags/linux/" style="font-size: 10px;">linux</a>
+    </div>
+  </aside>
+
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2017 Haier Zhu
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

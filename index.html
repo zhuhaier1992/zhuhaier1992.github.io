@@ -67,6 +67,130 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-Spring configFile" class="post-Spring configFile post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2017/11/17/Spring configFile/">Spring configFile</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/11/17/Spring configFile/" data-id="cja3j3vvf0005icvkwj3j8vin" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h2 id="spring-config-xml"><a href="#spring-config-xml" class="headerlink" title="spring-config.xml"></a>spring-config.xml</h2><p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xsi:schemalocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd"><br><br>    <!--加载配置文件--><br>    <context:property-placeholder location="classpath:application.properties"><br>    <!--引入mybatis配置文件--><br>    <import resource="spring-mybatis.xml"><br>    <!--引入shiro配置文件--><br>    <import resource="spring-shiro.xml"><br>    <!--扫描service层--><br>    <context:component-scan base-package="com.burningtower.service"><br></context:component-scan></import></import></context:property-placeholder></beans>
+
+<h2 id="spring-mvc-xml"><a href="#spring-mvc-xml" class="headerlink" title="spring-mvc.xml"></a>spring-mvc.xml</h2><p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc" xsi:schemalocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd
+            http://www.springframework.org/schema/mvc
+            http://www.springframework.org/schema/mvc/spring-mvc.xsd"><br><br>    <!--扫描controller层--><br>    <context:component-scan base-package="com.burningtower.controller"><br>    <!--开启注解驱动，方便使用注解开发--><br>    <mvc:annotation-driven><br><br>    <!--视图解析器--><br>    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="viewResolver"><br>        <property name="prefix" value="/WEB-INF/jsp/"><br>        <property name="suffix" value=".jsp"><br>    </property></property></bean><br><br>    <!-- 静态资源处理 方式一 --><br>    <mvc:resources mapping="/statics/js/**" location="/statics/js/"><br>    <mvc:resources mapping="/statics/css/**" location="/statics/css/"><br>    <mvc:resources mapping="/statics/**" location="/statics/"><br><br>    <!-- 静态资源处理 方式二，要DefaultServlet配置使用，在web.xml中配置 --><br>    <!--<mvc:default-servlet-handler/>--><br></mvc:resources></mvc:resources></mvc:resources></mvc:annotation-driven></context:component-scan></beans>
+
+<h2 id="log4j"><a href="#log4j" class="headerlink" title="log4j"></a>log4j</h2><p>#Global logging configuration<br>log4j.rootLogger=INFO, stdout</p>
+<p>#MyBatis logging configuration…<br>log4j.logger.com.study.controller=DEBUG<br>log4j.logger.com.study.mapper=DEBUG</p>
+<p>#Console output…<br>log4j.appender.stdout=org.apache.log4j.ConsoleAppender<br>log4j.appender.stdout.layout=org.apache.log4j.PatternLayout<br>log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n</p>
+<h2 id="web-xml"><a href="#web-xml" class="headerlink" title="web.xml"></a>web.xml</h2><p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemalocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+
+<pre><code>&lt;!--通过监听器加载配置文件，并初始化spring容器--&gt;
+&lt;context-param&gt;
+    &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+    &lt;param-value&gt;classpath:spring/spring-config.xml&lt;/param-value&gt;
+&lt;/context-param&gt;
+&lt;listener&gt;
+    &lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;
+&lt;/listener&gt;
+
+&lt;!--前端控制器--&gt;
+&lt;servlet&gt;
+    &lt;servlet-name&gt;DispatcherServlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
+    &lt;init-param&gt;
+        &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+        &lt;param-value&gt;classpath:spring/spring-mvc.xml&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+&lt;/servlet&gt;
+
+&lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;DispatcherServlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
+
+&lt;!-- 过滤器解决中文问题 --&gt;
+&lt;filter&gt;
+    &lt;filter-name&gt;encodingFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;org.springframework.web.filter.CharacterEncodingFilter&lt;/filter-class&gt;
+    &lt;init-param&gt;
+        &lt;param-name&gt;encoding&lt;/param-name&gt;
+        &lt;param-value&gt;UTF-8&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;init-param&gt;
+        &lt;param-name&gt;forceEncoding&lt;/param-name&gt;
+        &lt;param-value&gt;true&lt;/param-value&gt;
+    &lt;/init-param&gt;
+&lt;/filter&gt;
+
+&lt;filter-mapping&gt;
+    &lt;filter-name&gt;encodingFilter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;
+
+&lt;!--自动在spring容器中寻找shiroFilter--&gt;
+&lt;filter&gt;
+    &lt;filter-name&gt;shiroFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;org.springframework.web.filter.DelegatingFilterProxy&lt;/filter-class&gt;
+    &lt;init-param&gt;
+        &lt;param-name&gt;targetFilterLifecycle&lt;/param-name&gt;
+        &lt;param-value&gt;true&lt;/param-value&gt;
+    &lt;/init-param&gt;
+&lt;/filter&gt;
+
+&lt;filter-mapping&gt;
+    &lt;filter-name&gt;shiroFilter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;
+</code></pre><p></p></web-app><p></p>
+<h2 id="spring-shiro"><a href="#spring-shiro" class="headerlink" title="spring-shiro"></a>spring-shiro</h2><p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"><br><br>    <!--创建shiroFilter，shiro的核心--><br>    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean"><br>        <!--注入securityManager--><br>        <property name="securityManager" ref="securityManager"><br>        <!--如果没有认证，自动跳转到该页面--><br>        <property name="loginUrl" value="/login.jsp"><br>        <!--过滤链--><br>        <property name="filterChainDefinitions"><br>            <value><br>                /login=anon<br>                /** = authc<br>            </value><br>        </property><br>    </property></property></bean><br><br>    <!--配置WebSecurityManager--><br>    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager"><br>        <!--注入自定义的realm--><br>        <property name="realm" ref="userRealm"><br>    </property></bean><br><br>    <!--自定义reelm，用来认证和授权--><br>    <bean class="com.burningtower.shiro.UserRealm" id="userRealm"><br>        <property name="credentialsMatcher" ref="credentialsMatcher"><br>    </property></bean><br><br>    <!--凭证匹配器，用来解密md5--><br>    <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher" id="credentialsMatcher"><br>        <property name="hashAlgorithmName" value="md5"><br>    </property></bean><br><br>    <!--生命周期--><br>    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"><br><br></bean></beans>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2017/11/17/Spring configFile/">
+    <time datetime="2017-11-17T06:23:44.683Z" class="entry-date">
+        2017-11-17
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-Mybatis-plus configFile" class="post-Mybatis-plus configFile post type-post status-publish format-standard hentry">
     <!---->
 
@@ -82,14 +206,142 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/11/17/Mybatis-plus configFile/" data-id="cja3hxd2q0000gwvk3yjjgh1y" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/11/17/Mybatis-plus configFile/" data-id="cja3j3vvf0001icvkjot9ygpu" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <h2 id="MysqlGenerator-java"><a href="#MysqlGenerator-java" class="headerlink" title="MysqlGenerator.java"></a>MysqlGenerator.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.AutoGenerator;</div><div class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.config.DataSourceConfig;</div><div class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.config.GlobalConfig;</div><div class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.config.PackageConfig;</div><div class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.config.StrategyConfig;</div><div class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.config.converts.MySqlTypeConvert;</div><div class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.config.po.TableInfo;</div><div class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.config.rules.DbType;</div><div class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;</div><div class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.toolkit.StringUtils;</div><div class="line"><span class="keyword">import</span> org.springframework.core.io.ClassPathResource;</div><div class="line"><span class="keyword">import</span> org.springframework.core.io.Resource;</div><div class="line"><span class="keyword">import</span> org.springframework.core.io.support.PropertiesLoaderUtils;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.File;</div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> java.util.Properties;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MysqlGenerator</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		<span class="comment">/* 获取 JDBC 配置文件 */</span></div><div class="line">		Properties props = getProperties();</div><div class="line">		AutoGenerator mpg = <span class="keyword">new</span> AutoGenerator();</div><div class="line"></div><div class="line">		String outputDir = <span class="string">"C:\\Users\\Administrator\\Desktop\\data"</span>;</div><div class="line">		<span class="keyword">final</span> String viewOutputDir = outputDir + <span class="string">"/view/"</span>;</div><div class="line">		</div><div class="line">		<span class="comment">// 全局配置</span></div><div class="line">		GlobalConfig gc = <span class="keyword">new</span> GlobalConfig();</div><div class="line">		gc.setOutputDir(outputDir);</div><div class="line">		gc.setFileOverride(<span class="keyword">true</span>);</div><div class="line">		gc.setActiveRecord(<span class="keyword">true</span>);<span class="comment">// 开启 activeRecord 模式</span></div><div class="line">		gc.setEnableCache(<span class="keyword">false</span>);<span class="comment">// XML 二级缓存</span></div><div class="line">		gc.setBaseResultMap(<span class="keyword">true</span>);<span class="comment">// XML ResultMap</span></div><div class="line">		gc.setBaseColumnList(<span class="keyword">true</span>);<span class="comment">// XML columList</span></div><div class="line">		gc.setAuthor(<span class="string">"feifeimao"</span>);</div><div class="line"></div><div class="line">		<span class="comment">// 自定义文件命名，注意 %s 会自动填充表实体属性！</span></div><div class="line">		gc.setMapperName(<span class="string">"%sMapper"</span>);</div><div class="line">		gc.setXmlName(<span class="string">"%sMapper"</span>);</div><div class="line">		gc.setServiceName(<span class="string">"I%sService"</span>);</div><div class="line">		gc.setServiceImplName(<span class="string">"%sServiceImpl"</span>);</div><div class="line">		gc.setControllerName(<span class="string">"%sController"</span>);</div><div class="line">		mpg.setGlobalConfig(gc);</div><div class="line"></div><div class="line">		<span class="comment">// 数据源配置</span></div><div class="line">		DataSourceConfig dsc = <span class="keyword">new</span> DataSourceConfig();</div><div class="line">		dsc.setDbType(DbType.MYSQL);</div><div class="line">		dsc.setTypeConvert(<span class="keyword">new</span> MySqlTypeConvert());</div><div class="line">		dsc.setDriverName(<span class="string">"com.mysql.jdbc.Driver"</span>);</div><div class="line">		dsc.setUsername(props.getProperty(<span class="string">"db.master.user"</span>));</div><div class="line">		dsc.setPassword(props.getProperty(<span class="string">"db.master.password"</span>));</div><div class="line">		dsc.setUrl(props.getProperty(<span class="string">"db.master.url"</span>));</div><div class="line">		mpg.setDataSource(dsc);</div><div class="line"></div><div class="line">		<span class="comment">// 策略配置</span></div><div class="line">		StrategyConfig strategy = <span class="keyword">new</span> StrategyConfig();</div><div class="line">		<span class="comment">// strategy.setCapitalMode(true);// 全局大写命名</span></div><div class="line">		<span class="comment">// strategy.setDbColumnUnderline(true);//全局下划线命名</span></div><div class="line"><span class="comment">//		strategy.setTablePrefix(new String[] &#123; "bmd_", "mp_" &#125;);// 此处可以修改为您的表前缀</span></div><div class="line">		strategy.setNaming(NamingStrategy.underline_to_camel);<span class="comment">// 表名生成策略</span></div><div class="line">		 strategy.setInclude(<span class="keyword">new</span> String[] &#123; <span class="string">"user"</span>,<span class="string">"role"</span>,<span class="string">"resource"</span>,<span class="string">"user_role"</span>,<span class="string">"role_resource"</span> &#125;); <span class="comment">// 需要生成的表</span></div><div class="line">		<span class="comment">// strategy.setExclude(new String[]&#123;"test"&#125;); // 排除生成的表</span></div><div class="line">		<span class="comment">// 自定义实体父类</span></div><div class="line">		<span class="comment">// strategy.setSuperEntityClass("com.baomidou.demo.TestEntity");</span></div><div class="line">		<span class="comment">// 自定义实体，公共字段</span></div><div class="line">		<span class="comment">// strategy.setSuperEntityColumns(new String[] &#123; "test_id", "age" &#125;);</span></div><div class="line">		<span class="comment">// 自定义 mapper 父类</span></div><div class="line">		<span class="comment">// strategy.setSuperMapperClass("com.baomidou.demo.TestMapper");</span></div><div class="line">		<span class="comment">// 自定义 service 父类</span></div><div class="line">		<span class="comment">// strategy.setSuperServiceClass("com.baomidou.demo.TestService");</span></div><div class="line">		<span class="comment">// 自定义 service 实现类父类</span></div><div class="line">		<span class="comment">// strategy.setSuperServiceImplClass("com.baomidou.demo.TestServiceImpl");</span></div><div class="line">		<span class="comment">// 自定义 controller 父类</span></div><div class="line">		<span class="comment">//strategy.setSuperControllerClass("com.xingzhe.commons.base.BaseController");</span></div><div class="line">		<span class="comment">// 【实体】是否生成字段常量（默认 false）</span></div><div class="line">		<span class="comment">// public static final String ID = "test_id";</span></div><div class="line">		<span class="comment">// strategy.setEntityColumnConstant(true);</span></div><div class="line">		<span class="comment">// 【实体】是否为构建者模型（默认 false）</span></div><div class="line">		<span class="comment">// public User setName(String name) &#123;this.name = name; return this;&#125;</span></div><div class="line">		<span class="comment">// strategy.setEntityBuliderModel(true);</span></div><div class="line">		mpg.setStrategy(strategy);</div><div class="line"></div><div class="line">		<span class="comment">// 包配置</span></div><div class="line">		PackageConfig pc = <span class="keyword">new</span> PackageConfig();</div><div class="line">		pc.setModuleName(<span class="keyword">null</span>);  <span class="comment">//所属模块</span></div><div class="line">		pc.setParent(<span class="string">"com.study"</span>); <span class="comment">// 自定义包路径</span></div><div class="line">		pc.setController(<span class="string">"controller"</span>); <span class="comment">// 这里是控制器包名，默认 web</span></div><div class="line">		pc.setEntity(<span class="string">"entity"</span>);<span class="comment">//存放实体类的类名</span></div><div class="line">		pc.setXml(<span class="string">"mapper"</span>);<span class="comment">//存放mapper xml文件的类名</span></div><div class="line">		mpg.setPackageInfo(pc);</div><div class="line"></div><div class="line">		<span class="comment">/*// 注入自定义配置，可以在 VM 中使用 cfg.abc 设置的值</span></div><div class="line"><span class="comment">		InjectionConfig cfg = new InjectionConfig() &#123;</span></div><div class="line"><span class="comment">			@Override</span></div><div class="line"><span class="comment">			public void initMap() &#123;&#125;</span></div><div class="line"><span class="comment">		&#125;;</span></div><div class="line"><span class="comment">		// 生成的模版路径，不存在时需要先新建</span></div><div class="line"><span class="comment">		File viewDir = new File(viewOutputDir);</span></div><div class="line"><span class="comment">		if (!viewDir.exists()) &#123;</span></div><div class="line"><span class="comment">			viewDir.mkdirs();</span></div><div class="line"><span class="comment">		&#125;</span></div><div class="line"><span class="comment">		List&lt;FileOutConfig&gt; focList = new ArrayList&lt;FileOutConfig&gt;();</span></div><div class="line"><span class="comment">		focList.add(new FileOutConfig("/templates/add.jsp.vm") &#123;</span></div><div class="line"><span class="comment">			@Override</span></div><div class="line"><span class="comment">			public String outputFile(TableInfo tableInfo) &#123;</span></div><div class="line"><span class="comment">				return getGeneratorViewPath(viewOutputDir, tableInfo, "Add.jsp");</span></div><div class="line"><span class="comment">			&#125;</span></div><div class="line"><span class="comment">		&#125;);</span></div><div class="line"><span class="comment">		focList.add(new FileOutConfig("/templates/edit.jsp.vm") &#123;</span></div><div class="line"><span class="comment">			@Override</span></div><div class="line"><span class="comment">			public String outputFile(TableInfo tableInfo) &#123;</span></div><div class="line"><span class="comment">				return getGeneratorViewPath(viewOutputDir, tableInfo, "Edit.jsp");</span></div><div class="line"><span class="comment">			&#125;</span></div><div class="line"><span class="comment">		&#125;);</span></div><div class="line"><span class="comment">		focList.add(new FileOutConfig("/templates/list.jsp.vm") &#123;</span></div><div class="line"><span class="comment">			@Override</span></div><div class="line"><span class="comment">			public String outputFile(TableInfo tableInfo) &#123;</span></div><div class="line"><span class="comment">				return getGeneratorViewPath(viewOutputDir, tableInfo, "List.jsp");</span></div><div class="line"><span class="comment">			&#125;</span></div><div class="line"><span class="comment">		&#125;);</span></div><div class="line"><span class="comment">		cfg.setFileOutConfigList(focList);</span></div><div class="line"><span class="comment">		mpg.setCfg(cfg);*/</span></div><div class="line"></div><div class="line">		<span class="comment">// 执行生成</span></div><div class="line">		mpg.execute();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line"><span class="comment">	 * 获取配置文件</span></div><div class="line"><span class="comment">	 *</span></div><div class="line"><span class="comment">	 * <span class="doctag">@return</span> 配置Props</span></div><div class="line"><span class="comment">	 */</span></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Properties <span class="title">getProperties</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// 读取配置文件</span></div><div class="line">		Resource resource = <span class="keyword">new</span> ClassPathResource(<span class="string">"/config/application.properties"</span>);</div><div class="line">		Properties props = <span class="keyword">new</span> Properties();</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			props = PropertiesLoaderUtils.loadProperties(resource);</div><div class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> props;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">/**</span></div><div class="line"><span class="comment">	 * 页面生成的文件名</span></div><div class="line"><span class="comment">	 */</span></div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">getGeneratorViewPath</span><span class="params">(String viewOutputDir, TableInfo tableInfo, String suffixPath)</span> </span>&#123;</div><div class="line">		String name = StringUtils.firstToLowerCase(tableInfo.getEntityName());</div><div class="line">		String path = viewOutputDir + <span class="string">"/"</span> + name + <span class="string">"/"</span> + name + suffixPath;</div><div class="line">		File viewDir = <span class="keyword">new</span> File(path).getParentFile();</div><div class="line">		<span class="keyword">if</span> (!viewDir.exists()) &#123;</div><div class="line">			viewDir.mkdirs();</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> path;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="spring-mybatis"><a href="#spring-mybatis" class="headerlink" title="spring-mybatis"></a>spring-mybatis</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></div><div class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></div><div class="line"><span class="tag">       <span class="attr">xmlns:aop</span>=<span class="string">"http://www.springframework.org/schema/aop"</span></span></div><div class="line"><span class="tag">       <span class="attr">xmlns:tx</span>=<span class="string">"http://www.springframework.org/schema/tx"</span></span></div><div class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">"</span></span></div><div class="line"><span class="tag"><span class="string">            http://www.springframework.org/schema/beans</span></span></div><div class="line"><span class="tag"><span class="string">            http://www.springframework.org/schema/beans/spring-beans.xsd</span></span></div><div class="line"><span class="tag"><span class="string">            http://www.springframework.org/schema/aop</span></span></div><div class="line"><span class="tag"><span class="string">            http://www.springframework.org/schema/aop/spring-aop.xsd</span></span></div><div class="line"><span class="tag"><span class="string">            http://www.springframework.org/schema/tx</span></span></div><div class="line"><span class="tag"><span class="string">            http://www.springframework.org/schema/tx/spring-tx.xsd"</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="comment">&lt;!-- 数据源 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"dataSource"</span> <span class="attr">class</span>=<span class="string">"com.alibaba.druid.pool.DruidDataSource"</span> <span class="attr">init-method</span>=<span class="string">"init"</span> <span class="attr">destroy-method</span>=<span class="string">"close"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"$&#123;db.master.url&#125;"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"$&#123;db.master.user&#125;"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"$&#123;db.master.password&#125;"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">&lt;!-- ==========================Spring整合Mybatis-plus start================================= --&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 配置SqlSession工厂 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"sqlSessionFactory"</span> <span class="attr">class</span>=<span class="string">"com.baomidou.mybatisplus.spring.MybatisSqlSessionFactoryBean"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span>/&gt;</span></div><div class="line">        <span class="comment">&lt;!-- 自动扫描Mapping.xml文件 --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"mapperLocations"</span> <span class="attr">value</span>=<span class="string">"classpath*:mapper/*.xml"</span>/&gt;</span></div><div class="line">        <span class="comment">&lt;!--扫描实体类--&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"typeAliasesPackage"</span> <span class="attr">value</span>=<span class="string">"com.study.entity"</span>/&gt;</span></div><div class="line">        <span class="comment">&lt;!--mybatis-plus全局配置--&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"globalConfig"</span> <span class="attr">ref</span>=<span class="string">"globalConfig"</span>/&gt;</span></div><div class="line">        <span class="comment">&lt;!--mybatis插件--&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"plugins"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">array</span>&gt;</span></div><div class="line">                <span class="comment">&lt;!-- 分页插件 --&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"paginationInterceptor"</span> <span class="attr">class</span>=<span class="string">"com.baomidou.mybatisplus.plugins.PaginationInterceptor"</span>/&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">array</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="comment">&lt;!-- mybatis-plus 全局配置 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"globalConfig"</span> <span class="attr">class</span>=<span class="string">"com.baomidou.mybatisplus.entity.GlobalConfiguration"</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!--0代表主键为自增长--&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"idType"</span> <span class="attr">value</span>=<span class="string">"0"</span>/&gt;</span></div><div class="line">        <span class="comment">&lt;!--下划线转驼峰命名--&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dbColumnUnderline"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></div><div class="line">        <span class="comment">&lt;!--自定义的字段填充处理器--&gt;</span></div><div class="line">        <span class="comment">&lt;!--  &lt;property name="metaObjectHandler"&gt;</span></div><div class="line"><span class="comment">              &lt;bean class="com.study.common.MyMetaObjectHandler" /&gt;</span></div><div class="line"><span class="comment">          &lt;/property&gt;--&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="comment">&lt;!-- MyBatis接口扫描器，用以生成接口实现类  --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"mapperScannerConfigurer"</span> <span class="attr">class</span>=<span class="string">"org.mybatis.spring.mapper.MapperScannerConfigurer"</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!-- mapper接口的位置  --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"basePackage"</span> <span class="attr">value</span>=<span class="string">"com.study.mapper"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- ==========================Spring整合Mybatis-plus end================================= --&gt;</span></div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">&lt;!-- ================================事务管理 start===================================== --&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 配置事务管理器 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"transactionManager"</span> <span class="attr">class</span>=<span class="string">"org.springframework.jdbc.datasource.DataSourceTransactionManager"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="comment">&lt;!-- 事务注解 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">tx:annotation-driven</span> <span class="attr">transaction-manager</span>=<span class="string">"transactionManager"</span>/&gt;</span></div><div class="line"></div><div class="line">    <span class="comment">&lt;!-- 注意：如果使用注解管理事务，那么下面的属性和切面可以不配置--&gt;</span></div><div class="line"></div><div class="line">    <span class="comment">&lt;!-- 属性 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">tx:advice</span> <span class="attr">id</span>=<span class="string">"transactionAdvice"</span> <span class="attr">transaction-manager</span>=<span class="string">"transactionManager"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">tx:attributes</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"select*"</span> <span class="attr">propagation</span>=<span class="string">"SUPPORTS"</span> <span class="attr">read-only</span>=<span class="string">"true"</span>/&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"delete*"</span> <span class="attr">propagation</span>=<span class="string">"REQUIRED"</span> <span class="attr">rollback-for</span>=<span class="string">"Exception"</span>/&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"update*"</span> <span class="attr">propagation</span>=<span class="string">"REQUIRED"</span> <span class="attr">rollback-for</span>=<span class="string">"Exception"</span>/&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"insert*"</span> <span class="attr">propagation</span>=<span class="string">"REQUIRED"</span> <span class="attr">rollback-for</span>=<span class="string">"Exception"</span>/&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"*"</span> <span class="attr">propagation</span>=<span class="string">"REQUIRED"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">tx:attributes</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">tx:advice</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="comment">&lt;!-- 配置切面 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">aop:config</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">aop:advisor</span> <span class="attr">advice-ref</span>=<span class="string">"transactionAdvice"</span> <span class="attr">pointcut</span>=<span class="string">"execution(* com.study.service..*.*(..))"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- ================================事务管理 end===================================== --&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></div></pre></td></tr></table></figure>
+        <h2 id="MysqlGenerator-java"><a href="#MysqlGenerator-java" class="headerlink" title="MysqlGenerator.java"></a>MysqlGenerator.java</h2><p>import com.baomidou.mybatisplus.generator.AutoGenerator;<br>import com.baomidou.mybatisplus.generator.config.DataSourceConfig;<br>import com.baomidou.mybatisplus.generator.config.GlobalConfig;<br>import com.baomidou.mybatisplus.generator.config.PackageConfig;<br>import com.baomidou.mybatisplus.generator.config.StrategyConfig;<br>import com.baomidou.mybatisplus.generator.config.converts.MySqlTypeConvert;<br>import com.baomidou.mybatisplus.generator.config.po.TableInfo;<br>import com.baomidou.mybatisplus.generator.config.rules.DbType;<br>import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;<br>import com.baomidou.mybatisplus.toolkit.StringUtils;<br>import org.springframework.core.io.ClassPathResource;<br>import org.springframework.core.io.Resource;<br>import org.springframework.core.io.support.PropertiesLoaderUtils;</p>
+<p>import java.io.File;<br>import java.io.IOException;<br>import java.util.Properties;</p>
+<p>public class MysqlGenerator {</p>
+<pre><code>public static void main(String[] args) {
+    /* 获取 JDBC 配置文件 */
+    Properties props = getProperties();
+    AutoGenerator mpg = new AutoGenerator();
+
+    String outputDir = &quot;C:\\Users\\Administrator\\Desktop\\data&quot;;
+    final String viewOutputDir = outputDir + &quot;/view/&quot;;
+
+    // 全局配置
+    GlobalConfig gc = new GlobalConfig();
+    gc.setOutputDir(outputDir);
+    gc.setFileOverride(true);
+    gc.setActiveRecord(true);// 开启 activeRecord 模式
+    gc.setEnableCache(false);// XML 二级缓存
+    gc.setBaseResultMap(true);// XML ResultMap
+    gc.setBaseColumnList(true);// XML columList
+    gc.setAuthor(&quot;feifeimao&quot;);
+
+    // 自定义文件命名，注意 %s 会自动填充表实体属性！
+    gc.setMapperName(&quot;%sMapper&quot;);
+    gc.setXmlName(&quot;%sMapper&quot;);
+    gc.setServiceName(&quot;I%sService&quot;);
+    gc.setServiceImplName(&quot;%sServiceImpl&quot;);
+    gc.setControllerName(&quot;%sController&quot;);
+    mpg.setGlobalConfig(gc);
+
+    // 数据源配置
+    DataSourceConfig dsc = new DataSourceConfig();
+    dsc.setDbType(DbType.MYSQL);
+    dsc.setTypeConvert(new MySqlTypeConvert());
+    dsc.setDriverName(&quot;com.mysql.jdbc.Driver&quot;);
+    dsc.setUsername(props.getProperty(&quot;db.master.user&quot;));
+    dsc.setPassword(props.getProperty(&quot;db.master.password&quot;));
+    dsc.setUrl(props.getProperty(&quot;db.master.url&quot;));
+    mpg.setDataSource(dsc);
+
+    // 策略配置
+    StrategyConfig strategy = new StrategyConfig();
+    // strategy.setCapitalMode(true);// 全局大写命名
+    // strategy.setDbColumnUnderline(true);//全局下划线命名
+</code></pre><p>//        strategy.setTablePrefix(new String[] { “bmd<em>“, “mp</em>“ });// 此处可以修改为您的表前缀<br>        strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略<br>         strategy.setInclude(new String[] { “user”,”role”,”resource”,”user_role”,”role_resource” }); // 需要生成的表<br>        // strategy.setExclude(new String[]{“test”}); // 排除生成的表<br>        // 自定义实体父类<br>        // strategy.setSuperEntityClass(“com.baomidou.demo.TestEntity”);<br>        // 自定义实体，公共字段<br>        // strategy.setSuperEntityColumns(new String[] { “test_id”, “age” });<br>        // 自定义 mapper 父类<br>        // strategy.setSuperMapperClass(“com.baomidou.demo.TestMapper”);<br>        // 自定义 service 父类<br>        // strategy.setSuperServiceClass(“com.baomidou.demo.TestService”);<br>        // 自定义 service 实现类父类<br>        // strategy.setSuperServiceImplClass(“com.baomidou.demo.TestServiceImpl”);<br>        // 自定义 controller 父类<br>        //strategy.setSuperControllerClass(“com.xingzhe.commons.base.BaseController”);<br>        // 【实体】是否生成字段常量（默认 false）<br>        // public static final String ID = “test_id”;<br>        // strategy.setEntityColumnConstant(true);<br>        // 【实体】是否为构建者模型（默认 false）<br>        // public User setName(String name) {this.name = name; return this;}<br>        // strategy.setEntityBuliderModel(true);<br>        mpg.setStrategy(strategy);</p>
+<pre><code>    // 包配置
+    PackageConfig pc = new PackageConfig();
+    pc.setModuleName(null);  //所属模块
+    pc.setParent(&quot;com.study&quot;); // 自定义包路径
+    pc.setController(&quot;controller&quot;); // 这里是控制器包名，默认 web
+    pc.setEntity(&quot;entity&quot;);//存放实体类的类名
+    pc.setXml(&quot;mapper&quot;);//存放mapper xml文件的类名
+    mpg.setPackageInfo(pc);
+
+    /*// 注入自定义配置，可以在 VM 中使用 cfg.abc 设置的值
+    InjectionConfig cfg = new InjectionConfig() {
+        @Override
+        public void initMap() {}
+    };
+    // 生成的模版路径，不存在时需要先新建
+    File viewDir = new File(viewOutputDir);
+    if (!viewDir.exists()) {
+        viewDir.mkdirs();
+    }
+    List&lt;FileOutConfig&gt; focList = new ArrayList&lt;FileOutConfig&gt;();
+    focList.add(new FileOutConfig(&quot;/templates/add.jsp.vm&quot;) {
+        @Override
+        public String outputFile(TableInfo tableInfo) {
+            return getGeneratorViewPath(viewOutputDir, tableInfo, &quot;Add.jsp&quot;);
+        }
+    });
+    focList.add(new FileOutConfig(&quot;/templates/edit.jsp.vm&quot;) {
+        @Override
+        public String outputFile(TableInfo tableInfo) {
+            return getGeneratorViewPath(viewOutputDir, tableInfo, &quot;Edit.jsp&quot;);
+        }
+    });
+    focList.add(new FileOutConfig(&quot;/templates/list.jsp.vm&quot;) {
+        @Override
+        public String outputFile(TableInfo tableInfo) {
+            return getGeneratorViewPath(viewOutputDir, tableInfo, &quot;List.jsp&quot;);
+        }
+    });
+    cfg.setFileOutConfigList(focList);
+    mpg.setCfg(cfg);*/
+
+    // 执行生成
+    mpg.execute();
+}
+
+/**
+ * 获取配置文件
+ *
+ * @return 配置Props
+ */
+private static Properties getProperties() {
+    // 读取配置文件
+    Resource resource = new ClassPathResource(&quot;/config/application.properties&quot;);
+    Properties props = new Properties();
+    try {
+        props = PropertiesLoaderUtils.loadProperties(resource);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    return props;
+}
+
+/**
+ * 页面生成的文件名
+ */
+private static String getGeneratorViewPath(String viewOutputDir, TableInfo tableInfo, String suffixPath) {
+    String name = StringUtils.firstToLowerCase(tableInfo.getEntityName());
+    String path = viewOutputDir + &quot;/&quot; + name + &quot;/&quot; + name + suffixPath;
+    File viewDir = new File(path).getParentFile();
+    if (!viewDir.exists()) {
+        viewDir.mkdirs();
+    }
+    return path;
+}
+</code></pre><p>}</p>
+<h2 id="spring-mybatis"><a href="#spring-mybatis" class="headerlink" title="spring-mybatis"></a>spring-mybatis</h2><p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx" xsi:schemalocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/aop
+            http://www.springframework.org/schema/aop/spring-aop.xsd
+            http://www.springframework.org/schema/tx
+            http://www.springframework.org/schema/tx/spring-tx.xsd"><br><br>    <!-- 数据源 --><br>    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close"><br>        <property name="url" value="${db.master.url}"><br>        <property name="username" value="${db.master.user}"><br>        <property name="password" value="${db.master.password}"><br>    </property></property></property></bean><br><br><br>    <!-- ==========================Spring整合Mybatis-plus start================================= --><br>    <!-- 配置SqlSession工厂 --><br>    <bean id="sqlSessionFactory" class="com.baomidou.mybatisplus.spring.MybatisSqlSessionFactoryBean"><br>        <property name="dataSource" ref="dataSource"><br>        <!-- 自动扫描Mapping.xml文件 --><br>        <property name="mapperLocations" value="classpath*:mapper/*.xml"><br>        <!--扫描实体类--><br>        <property name="typeAliasesPackage" value="com.study.entity"><br>        <!--mybatis-plus全局配置--><br>        <property name="globalConfig" ref="globalConfig"><br>        <!--mybatis插件--><br>        <property name="plugins"><br>            <array><br>                <!-- 分页插件 --><br>                <bean id="paginationInterceptor" class="com.baomidou.mybatisplus.plugins.PaginationInterceptor"><br>            </bean></array><br>        </property><br>    </property></property></property></property></bean><br><br>    <!-- mybatis-plus 全局配置 --><br>    <bean id="globalConfig" class="com.baomidou.mybatisplus.entity.GlobalConfiguration"><br>        <!--0代表主键为自增长--><br>        <property name="idType" value="0"><br>        <!--下划线转驼峰命名--><br>        <property name="dbColumnUnderline" value="true"><br>        <!--自定义的字段填充处理器--><br>        <!--  <property name="metaObjectHandler">
+              <bean class="com.study.common.MyMetaObjectHandler" />
+          </property>--><br>    </property></property></bean><br><br>    <!-- MyBatis接口扫描器，用以生成接口实现类  --><br>    <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer"><br>        <!-- mapper接口的位置  --><br>        <property name="basePackage" value="com.study.mapper"><br>    </property></bean><br>    <!-- ==========================Spring整合Mybatis-plus end================================= --><br><br><br>    <!-- ================================事务管理 start===================================== --><br>    <!-- 配置事务管理器 --><br>    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"><br>        <property name="dataSource" ref="dataSource"><br>    </property></bean><br><br>    <!-- 事务注解 --><br>    <tx:annotation-driven transaction-manager="transactionManager"><br><br>    <!-- 注意：如果使用注解管理事务，那么下面的属性和切面可以不配置--><br><br>    <!-- 属性 --><br>    <tx:advice id="transactionAdvice" transaction-manager="transactionManager"><br>        <tx:attributes><br>            <tx:method name="select*" propagation="SUPPORTS" read-only="true"><br>            <tx:method name="delete*" propagation="REQUIRED" rollback-for="Exception"><br>            <tx:method name="update*" propagation="REQUIRED" rollback-for="Exception"><br>            <tx:method name="insert*" propagation="REQUIRED" rollback-for="Exception"><br>            <tx:method name="*" propagation="REQUIRED"><br>        </tx:method></tx:method></tx:method></tx:method></tx:method></tx:attributes><br>    </tx:advice><br><br>    <!-- 配置切面 --><br>    <aop:config><br>        <aop:advisor advice-ref="transactionAdvice" pointcut="execution(* com.study.service..*.*(..))"><br>    </aop:advisor></aop:config><br>    <!-- ================================事务管理 end===================================== --><br></tx:annotation-driven></beans>
+
       
     </div><!-- .entry-content -->
 
@@ -125,7 +377,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/11/16/POMs/" data-id="cja3hxd2q0002gwvkdphiod4a" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/11/16/POMs/" data-id="cja3j3vvf0004icvky9cwbg2m" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -539,7 +791,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/11/02/Linux入门/" data-id="cja3hxd2q0001gwvk4swlthrt" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/11/02/Linux入门/" data-id="cja3j3vvf0000icvkcc0ohajs" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -589,7 +841,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/11/01/hello-world/" data-id="cja3hxd2q0005gwvk97cwer1l" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/11/01/hello-world/" data-id="cja3j3vvf0006icvkhbpcvmks" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -653,6 +905,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget-content">
       <ul>
+        
+          <li>
+            <a href="/2017/11/17/Spring configFile/">Spring configFile</a>
+          </li>
         
           <li>
             <a href="/2017/11/17/Mybatis-plus configFile/">Mybatis-plus configFile</a>
