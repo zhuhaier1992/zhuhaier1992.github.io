@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="Burning Tower">
 <meta property="og:description" content="Linux特征windows：最通用操作系统，适用PC，应用广泛mac：份额较低，安全性高linux：适用于服务器终端，免费 常用版本Ubuntu: 图形化界面CentOs: 指令操作 命令 command概念在terminal中操作计算机的语句 命令格式命令 [-options] [paramters]parameter指定命令的参数，如mv rm的操作对象。形同宾语。options指定命令的选">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-11-20T12:55:20.647Z">
+<meta property="og:updated_time" content="2017-11-21T02:43:27.279Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux入门">
 <meta name="twitter:description" content="Linux特征windows：最通用操作系统，适用PC，应用广泛mac：份额较低，安全性高linux：适用于服务器终端，免费 常用版本Ubuntu: 图形化界面CentOs: 指令操作 命令 command概念在terminal中操作计算机的语句 命令格式命令 [-options] [paramters]parameter指定命令的参数，如mv rm的操作对象。形同宾语。options指定命令的选">
@@ -82,7 +82,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/11/02/Linux入门/" data-id="cja872m590001zovk39d9wbxr" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/11/02/Linux入门/" data-id="cja8z96r100005gvk31v6yduh" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -93,19 +93,106 @@
 <h2 id="命令-command"><a href="#命令-command" class="headerlink" title="命令 command"></a>命令 command</h2><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>在terminal中操作计算机的语句</p>
 <h4 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h4><p>命令 [-options] [paramters]<br>parameter指定命令的参数，如mv rm的操作对象。形同宾语。<br>options指定命令的选项，如mv -i操作提示。形同定语、状语。</p>
 <h4 id="帮助指令："><a href="#帮助指令：" class="headerlink" title="帮助指令："></a>帮助指令：</h4><p>command –help<br>或<br>man command<br>    f/space 前滚一页<br>    b 后退一页<br>    enter 下一行<br>    q 退出</p>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h4 id="文件夹操作"><a href="#文件夹操作" class="headerlink" title="文件夹操作"></a>文件夹操作</h4><p>ls                    显示所有文件                [-lh 详细信息 -a 显示所有]<br>    ls配合通配符使用：</p>
-<pre><code>* 任意数量的字符
-? 一个字符
-[]其中一个字符
-</code></pre><p>tree <em>path            显示文件树                    [-d 只显示文件夹]<br>cd </em>path            打开某路径<br>    cd常用参数：</p>
-<pre><code>-     最近使用的两个目录切换
-.     当前目录
-..     上一级目录
-~    home目录
-/    根目录
-</code></pre><p>rm <em>file            删除                             [-r 删除文件夹 -f 强制删除无提示]<br>mv </em>src <em>targ        移动、重命名                    [-r 移动文件夹 -i 覆盖提示]<br>cp </em>src <em>targ        复制从src到targ                    [-r 复制文件夹 -i 覆盖提示]<br>touch </em>file            创建文件、修改修改日期<br>mkdir                创建文件夹                        [-p 创建多个目录]<br>cat    <em>file            查看                            [-b 显示非空行号 -n 所有行号]<br>more </em>file            分屏查看<br>grep <em>keyword </em>file    查找文本 keyword如有空格用””    [-n 显示行号 -v取反 -i忽略大小写]<br>    grep可用正则表达式查找<br>        ^a 查找以a开头<br>        a$ 以a结尾<br>echo                控制台显示文本<br>    配合重定向使用，可同时创建文件</p>
-<h4 id="命令增强"><a href="#命令增强" class="headerlink" title="命令增强"></a>命令增强</h4><p>重定向：&gt; 覆盖某文件 &gt;&gt;追加进某文件<br>        example: echo hello world! &gt; b<br>                 tree &gt;&gt; b<br>管道：| 将一个命令的结果作为另一个命令的参数<br>    常用管道：more grep<br>        exp: ls -lha ~ | more<br>             ls -lh | grep do<br>权限：sudo</p>
-<h4 id="硬件相关"><a href="#硬件相关" class="headerlink" title="硬件相关"></a>硬件相关</h4><p>shutdown *时间            关机，默认一分钟后关机        [-r 重启 -c 取消]<br>    时间：    +10     十分钟后<br>            20:25     指定时间<br>            now        立即<br>ifconfig                查看ip地址<br>    常用配合<br>        ifconfig | grep inet</p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h4 id="文件夹操作"><a href="#文件夹操作" class="headerlink" title="文件夹操作"></a>文件夹操作</h4><table>
+<thead>
+<tr>
+<th>command</th>
+<th>usage</th>
+<th>options</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tree {path}</td>
+<td>显示文件树</td>
+<td>-d 只显示文件夹</td>
+</tr>
+<tr>
+<td>ls {path}</td>
+<td>显示所有文件</td>
+<td>-lh 详细信息<br> -a 显示所有</td>
+</tr>
+<tr>
+<td>cd {path}</td>
+<td>打开某路径</td>
+</tr>
+</tbody>
+</table>
+<pre><code>ls配合通配符使用：
+    * 任意数量的字符
+    ? 一个字符
+    []其中一个字符
+cd常用参数：
+    -     最近使用的两个目录切换
+    .     当前目录
+    ..     上一级目录
+    ~    home目录
+    /    根目录
+</code></pre><table>
+<thead>
+<tr>
+<th>command</th>
+<th>usage</th>
+<th>options</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rm {file}</td>
+<td>删除</td>
+<td>-r 删除文件夹 <br>-f 强制删除无提示</td>
+</tr>
+<tr>
+<td>mv {src} {targ}</td>
+<td>移动、重命名</td>
+<td>-r 移动文件夹 <br>-i 覆盖提示</td>
+</tr>
+<tr>
+<td>cp {src} {targ}</td>
+<td>复制从src到targ</td>
+<td>-r 复制文件夹 <br>-i 覆盖提示</td>
+</tr>
+<tr>
+<td>touch {file}</td>
+<td>创建文件、修改修改日期</td>
+</tr>
+<tr>
+<td>mkdir</td>
+<td>创建文件夹</td>
+<td>-p 创建多个目录</td>
+</tr>
+<tr>
+<td>cat    {file}</td>
+<td>查看</td>
+<td>-b 显示非空行号 <br>-n 所有行号</td>
+</tr>
+<tr>
+<td>more {file}</td>
+<td>分屏查看</td>
+</tr>
+<tr>
+<td>grep {keyword} {file}</td>
+<td>查找文本 {keyword}如有空格用””包裹</td>
+<td>-n 显示行号 <br>-v 取反 <br>-i 忽略大小写</td>
+</tr>
+<tr>
+<td>—–</td>
+<td>grep可用正则表达式查找</td>
+<td>^a 查找以a开头<br> a$ 以a结尾</td>
+</tr>
+<tr>
+<td>echo</td>
+<td>控制台显示文本</td>
+<td>配合重定向使用，可同时创建文件</td>
+</tr>
+</tbody>
+</table>
+<h4 id="命令增强"><a href="#命令增强" class="headerlink" title="命令增强"></a>命令增强</h4><blockquote>
+<p>重定向：<br>> 覆盖某文件 &gt;&gt;追加进某文件<br>        example: echo hello world! &gt; b<br>                 tree &gt;&gt; b</p>
+<p>管道：<br>| 将一个命令的结果作为另一个命令的参数<br>    常用管道：more grep<br>        exp: ls -lha ~ | more<br>             ls -lh | grep do</p>
+<p>权限：<br>sudo</p>
+<h4 id="硬件相关"><a href="#硬件相关" class="headerlink" title="硬件相关"></a>硬件相关</h4><p>shutdown *时间            |关机，默认一分钟后关机        |[-r 重启 -c 取消]<br>    |时间：|    +10     十分钟后<br>    |        |20:25     指定时间<br>    |        |now        立即<br>—|—|—<br>ifconfig                |查看ip地址<br>    |常用配合<br>    |    |ifconfig | grep inet</p>
+</blockquote>
 
       
     </div><!-- .entry-content -->
